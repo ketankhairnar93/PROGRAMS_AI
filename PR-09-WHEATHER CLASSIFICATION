@@ -1,0 +1,20 @@
+rules = [
+    ({'temp': 'hot', 'humidity': 'low', 'wind': 'none'}, 'Sunny'),
+    ({'temp': 'cold', 'humidity': 'high', 'wind': 'none'}, 'Rainy')
+]
+def predict(w):
+    for cond, out in rules:
+        ok = True
+        for k in cond:
+            if w[k] != cond[k]:
+                ok = False
+        if ok:
+            return out
+    return "Unknown"
+
+w = {
+    'temp': input("Enter temperature: "),
+    'humidity': input("Enter humidity: "),
+    'wind': input("Enter wind: ")
+}
+print("Predicted Weather:", predict(w))
