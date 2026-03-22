@@ -1,0 +1,12 @@
+text = "The smart student studies hard for exams"
+words = text.split()
+tags = [(w, "DET" if w.lower() in ["the","a","an"] 
+         else "NOUN" if w.lower() in ["student","exams"] 
+         else "VERB" if w.lower() in ["studies"] 
+         else "ADJ" if w.lower() in ["smart","hard"] else "UNK") 
+        for w in words]
+chunks = [(tags[i][0]+" "+tags[i+1][0],"NP") for i in range(len(tags)-1) if tags[i][1]=="ADJ" and tags[i+1][1]=="NOUN"]
+chunks += [(w,"NP") for w,t in tags if t=="NOUN"]
+
+print("POS Tags:", tags)
+print("Chunks:", chunks)
