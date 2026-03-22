@@ -1,0 +1,20 @@
+def chatbot(u):
+    u = u.lower().strip()
+    if "hello" in u or "hi" in u:
+        return "Hello! How can I help you?"
+    elif "weather" in u:
+        return "It looks sunny!"
+    elif "name" in u:
+        return "I am a simple chatbot."
+    elif "help" in u:
+        return "Ask me about weather or greetings."
+    elif "bye" in u:
+        return "Goodbye!"
+    else:
+        return "I don't understand."
+print("Chatbot: Hello! Type 'bye' to exit.")
+while True:
+    user = input("You: ")
+    print("Chatbot:", chatbot(user))
+    if "bye" in user.lower():
+        break
