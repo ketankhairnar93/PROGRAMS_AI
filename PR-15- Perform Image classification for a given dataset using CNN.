@@ -1,0 +1,11 @@
+import numpy as np
+images = np.random.rand(3, 5, 5, 3)
+filters = np.random.rand(2, 3, 3, 3)  # 2 filters
+def conv(img, filt):
+    h, w, c = img.shape
+    nf, kh, kw, _ = filt.shape
+    return np.array([[[
+        np.sum(img[i:i+kh, j:j+kw, :] * filt[f]) 
+        for j in range(w-kw+1)] for i in range(h-kh+1)] for f in range(nf)]) 
+conv_outputs = np.array([conv(img, filters) for img in images])
+print("Conv output shape:", conv_outputs.shape)
