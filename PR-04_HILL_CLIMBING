@@ -1,0 +1,13 @@
+import random
+def hill(data):
+ i=random.randint(0,len(data)-1)
+ while True:
+  n=[]
+  if i>0: n.append((i-1,data[i-1]))
+  if i<len(data)-1: n.append((i+1,data[i+1]))
+  ni,nv=max(n,key=lambda x:x[1],default=(i,data[i]))
+  if nv<=data[i]: return i,data[i]
+  i=ni
+
+data=[1,3,7,8,6,4,2,10,5,3,1]
+print(hill(data))
