@@ -1,0 +1,8 @@
+from itertools import product
+
+def tt(expr, vars):
+ for vals in product([True,False], repeat=len(vars)):
+  d=dict(zip(vars,vals))
+  print(d, eval(expr,{},d))
+
+tt("P and Q", ['P','Q'])
