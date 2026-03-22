@@ -1,0 +1,17 @@
+import heapq
+def astar(g,s,e):
+ r,c=len(g),len(g[0])
+ h=lambda a,b:abs(a[0]-b[0])+abs(a[1]-b[1])
+ q=[(h(s,e),0,s,[s])]; v=set(); d=[(-1,0),(1,0),(0,-1),(0,1)]
+ while q:
+  f,gs,(x,y),p=heapq.heappop(q)
+  if (x,y)==e: return p
+  if (x,y) in v: continue
+  v.add((x,y))
+  for dx,dy in d:
+   nx,ny=x+dx,y+dy
+   if 0<=nx<r and 0<=ny<c and g[nx][ny]!='#' and (nx,ny) not in v:
+    heapq.heappush(q,(gs+1+h((nx,ny),e),gs+1,(nx,ny),p+[(nx,ny)]))
+ return None
+grid=[['.','.','.','.'],['.','#','#','.'],['.','.','.','.'],['#','.','#','.']]
+print(astar(grid,(0,0),(3,3)))
