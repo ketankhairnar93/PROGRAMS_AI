@@ -1,0 +1,9 @@
+import spacy
+nlp=spacy.load("en_core_web_sm")
+
+doc=nlp("Mohit studies AI at MIT and he lives in Jalgaon.")
+
+print("Tokens:",[t.text for t in doc])
+print("POS:",[(t.text,t.pos_) for t in doc])
+print("NER:",[(e.text,e.label_) for e in doc.ents])
+print("Chunks:",[c.text for c in doc.noun_chunks])
