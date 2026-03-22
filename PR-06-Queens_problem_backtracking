@@ -1,0 +1,13 @@
+def solve(n):
+ q=[-1]*n; res=[]
+ def bt(r):
+  if r==n: res.append(q[:]); return
+  for c in range(n):
+   if all(q[i]!=c and abs(q[i]-c)!=abs(i-r) for i in range(r)):
+    q[r]=c; bt(r+1); q[r]=-1
+ bt(0); return res
+for sol in solve(4):
+ print()
+ for i in sol:
+  row=['.']*len(sol); row[i]='Q'
+  print(" ".join(row))
