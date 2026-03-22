@@ -1,0 +1,14 @@
+text="I am student of BCA and my class is SYBCA M.J.College, Jalgaon"
+
+tokens=text.split()
+stop={"is","a","in","the","and","of"}
+filtered=[w for w in tokens if w.lower() not in stop]
+
+def stem(w):
+    for s in ["ing","ed","s","es"]:
+        if w.lower().endswith(s): return w[:-len(s)]
+    return w
+
+print("Tokens:",tokens)
+print("Filtered:",filtered)
+print("Stemmed:",[stem(w) for w in filtered])
