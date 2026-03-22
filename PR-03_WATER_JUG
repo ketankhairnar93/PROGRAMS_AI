@@ -1,0 +1,14 @@
+from collections import deque
+def bfs():
+ q=deque([((0,0),[(0,0)])]); v=set()
+ while q:
+  (x,y),p=q.popleft()
+  if (x,y) in v: continue
+  v.add((x,y))
+  if x==2 or y==2: return p
+  for nx,ny in [(4,y),(x,3),(0,y),(x,0),
+                (x-min(x,3-y),y+min(x,3-y)),
+                (x+min(y,4-x),y-min(y,4-x))]:
+   if (nx,ny) not in v: q.append(((nx,ny),p+[(nx,ny)]))
+res=bfs()
+for s in res: print(s) if res else print("No solution")
