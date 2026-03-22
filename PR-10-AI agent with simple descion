@@ -1,0 +1,10 @@
+def student_result_agent(score):
+    if score >= 50:
+        return "Pass"
+    else:
+        return "Fail"
+score = int(input("Enter student score (0-100): "))
+decision = student_result_agent(score)
+
+print(f"\nStudent Result: {decision}")
+
